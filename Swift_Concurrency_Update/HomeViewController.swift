@@ -7,48 +7,54 @@
 
 import UIKit
 
-class HomeViewController: UITableViewController {
+class HomeViewModel {
+    var users: [User] = []
+    
+    func getUserList(completion: @escaping (Error?) -> Void) {
+        let userListApi = Route.baseURL + Route.user.description
+        NetworkService.makeRequest(url: userListApi, type: [User].self) {[self] result in
+            switch result {
+            case .success(let value):
+                users = value
+                completion(nil)
+            case .failure(let error):
+                completion(error)
+            }
+        }
+    }
+}
 
+
+class HomeViewController: UITableViewController {
+    let viewModel = HomeViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-}
-
-class NetworkService: AnyObject {
-    func makeRequest<T: Codable>(url: String, completionHandler: (Result<T>) -> Void) {
-        
-        guard let url = url.asURL else {
-            completionHandler(.failure(LocalError.invalidURL))
-        }
-        
-        let request = URLRequest(url: url)
-        let dataTask = URLSession.shared.dataTask(with: request) { data, _, error in
-            
-            guard error != nil, let data = data {
-                completionHandler(.failure(LocalError.unknownError))
+        viewModel.getUserList { error in
+            if let error = error {
+                // Some error
+                print(error.localizedDescription)
                 return
             }
-            
-            do {
-                let responseData = try JSONDecoder().decode(T, from: data)
-                completionHandler(.success(responseData))
-            } catch {
-                completionHandler(.failure(LocalError.unableToDecode))
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
-        dataTask.resume()
     }
 }
 
-extension String {
-    var asURL: URL? {
-        URL(string: self)
+extension HomeViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.users.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = viewModel.users[indexPath.row].name
+        return cell
     }
 }
 
-enum LocalError: Error {
-    case invalidURL
-    case unknownError
-    case unableToDecode
+struct User: Codable {
+    let name: String
 }

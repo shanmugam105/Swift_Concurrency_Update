@@ -12,6 +12,10 @@
 		0407C9A028A16927003177E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0407C99E28A16927003177E3 /* Main.storyboard */; };
 		0407C9A228A1692A003177E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0407C9A128A1692A003177E3 /* Assets.xcassets */; };
 		0407C9A528A1692A003177E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0407C9A328A1692A003177E3 /* LaunchScreen.storyboard */; };
+		0407C9AF28A172C4003177E3 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407C9AE28A172C4003177E3 /* Route.swift */; };
+		0407C9B128A172CE003177E3 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407C9B028A172CE003177E3 /* HTTPMethod.swift */; };
+		0407C9B328A1734E003177E3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407C9B228A1734E003177E3 /* NetworkService.swift */; };
+		0407C9B628A173DA003177E3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407C9B528A173DA003177E3 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		0407C9A128A1692A003177E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0407C9A428A1692A003177E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0407C9A628A1692A003177E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0407C9AE28A172C4003177E3 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		0407C9B028A172CE003177E3 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		0407C9B228A1734E003177E3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		0407C9B528A173DA003177E3 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			children = (
 				0407C99828A16927003177E3 /* AppDelegate.swift */,
 				0407C99C28A16927003177E3 /* HomeViewController.swift */,
+				0407C9B428A173A4003177E3 /* NetworkService */,
 				0407C9AD28A16B34003177E3 /* Storyboard */,
 				0407C9AC28A169A5003177E3 /* Global */,
 			);
@@ -68,6 +77,7 @@
 				0407C9A128A1692A003177E3 /* Assets.xcassets */,
 				0407C9A328A1692A003177E3 /* LaunchScreen.storyboard */,
 				0407C9A628A1692A003177E3 /* Info.plist */,
+				0407C9B528A173DA003177E3 /* Helper.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -78,6 +88,16 @@
 				0407C99E28A16927003177E3 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		0407C9B428A173A4003177E3 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				0407C9B028A172CE003177E3 /* HTTPMethod.swift */,
+				0407C9B228A1734E003177E3 /* NetworkService.swift */,
+				0407C9AE28A172C4003177E3 /* Route.swift */,
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,8 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0407C9B328A1734E003177E3 /* NetworkService.swift in Sources */,
+				0407C9B128A172CE003177E3 /* HTTPMethod.swift in Sources */,
+				0407C9AF28A172C4003177E3 /* Route.swift in Sources */,
 				0407C99D28A16927003177E3 /* HomeViewController.swift in Sources */,
 				0407C99928A16927003177E3 /* AppDelegate.swift in Sources */,
+				0407C9B628A173DA003177E3 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
